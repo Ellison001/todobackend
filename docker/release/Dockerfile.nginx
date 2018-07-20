@@ -1,0 +1,4 @@
+FROM nginx
+MAINTAINER ezhang <ellison.zhang@activenetwork.com>
+
+COPY todobackend.conf /etc/nginx/conf.d/todobackend.conf
