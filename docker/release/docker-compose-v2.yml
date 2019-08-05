@@ -3,10 +3,9 @@ version: '2'
 volumes:
   webroot:
     driver: local
-
 services:
   app:
-    build: 
+    build:
       context: ../../
       dockerfile: docker/release/Dockerfile
     links:
@@ -25,7 +24,6 @@ services:
       - "--module todobackend.wsgi"
       - "--master"
       - "--die-on-term"
-
   test:
     image: ezhang/todobackend-specs
     links:
@@ -34,10 +32,10 @@ services:
       URL: http://nginx:8000/todos
       JUNIT_REPORT_PATH: /reports/acceptance.xml
       JUNIT_REPORT_STACK: 1
-    command: --reporter mocha-jenkins-reporter
-
+    command: --reporter spec
+  
   nginx:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.nginx
     links:
@@ -46,7 +44,7 @@ services:
       - "8000:8000"
     volumes:
       - webroot:/var/www/todobackend
-
+  
   db:
     image: mysql:5.6
     expose:
@@ -56,7 +54,7 @@ services:
       MYSQL_USER: todo
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
-
+  
   agent:
     image: ezhang/ansible
     links:

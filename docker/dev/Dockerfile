@@ -1,7 +1,5 @@
 FROM ezhang/todobackend-base:latest
 
-MAINTAINER ezhang <ellison.zhang@activenetwork.com>
-
 RUN apt-get update && \
     apt-get install -qy python-dev libmysqlclient-dev
 

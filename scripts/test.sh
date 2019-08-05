@@ -1,5 +1,5 @@
 #!/bin/bash
-# Activate virtual environment
+
 . /appenv/bin/activate
 
 pip download -d /build -r requirements_test.txt --no-input

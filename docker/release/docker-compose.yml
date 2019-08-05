@@ -17,7 +17,6 @@ app:
     - "--module todobackend.wsgi"
     - "--master"
     - "--die-on-term"
-
 test:
   image: ezhang/todobackend-specs
   links:
@@ -26,7 +25,7 @@ test:
     URL: http://nginx:8000/todos
     JUNIT_REPORT_PATH: /reports/acceptance.xml
     JUNIT_REPORT_STACK: 1
-  command: --reporter mocha-jenkins-reporter
+  command: --reporter spec
 
 nginx:
   build: .

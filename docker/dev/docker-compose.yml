@@ -17,8 +17,8 @@ builder:
   dockerfile: docker/dev/Dockerfile
   volumes_from:
     - cache
-  entrypoint: "entrypoint.sh"
-  command: ["pip", "wheel", "--no-index", "-f /build", "."]
+  entrypoint: ["entrypoint.sh"]
+  command: ["pip", "wheel", "--no-index","-f /build", "."]
 
 agent:
   image: ezhang/ansible
@@ -29,7 +29,7 @@ agent:
     PROBE_PORT: "3306"
   command: ["probe.yml"]
 
-db: 
+db:
   image: mysql:5.6
   hostname: db
   expose:

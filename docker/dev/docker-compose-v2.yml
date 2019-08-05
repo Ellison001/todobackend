@@ -8,9 +8,9 @@ volumes:
 
 services:
   test:
-    build: 
+    build:
       context: ../../
-      dockerfile: docker/dev/Dockerfile  
+      dockerfile: docker/dev/Dockerfile
     volumes:
       - cache:/cache
       - build:/build
@@ -22,16 +22,16 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       TEST_OUTPUT_DIR: /reports
-
+  
   builder:
-    build: 
+    build:
       context: ../../
       dockerfile: docker/dev/Dockerfile
     volumes:
       - build:/build
-    entrypoint: "entrypoint.sh"
-    command: ["pip", "wheel", "--no-index", "-f /build", "."]
-
+    entrypoint: ["entrypoint.sh"]
+    command: ["pip", "wheel", "--no-index","-f /build", "."]
+  
   agent:
     image: ezhang/ansible
     links:
@@ -40,11 +40,12 @@ services:
       PROBE_HOST: "db"
       PROBE_PORT: "3306"
     command: ["probe.yml"]
-
-  db: 
+  
+  db:
     image: mysql:5.6
     hostname: db
     expose:
       - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
+  
