@@ -24,7 +24,7 @@ node {
     
     finally {
         stage 'Collect test reports'
-        echo 'Skip test reports at this moment'
+        echo 'Skip test reports at this moment.'
         stage 'Clean up'
         sh 'make clean'
         sh 'make logout'
