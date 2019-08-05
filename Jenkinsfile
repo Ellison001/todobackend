@@ -24,7 +24,7 @@ node {
     
     finally {
         stage 'Collect test reports'
-        step([$class: 'JUnitResultArchiver', testResults: '**/reports/*.xml', healthScaleFactor: 1.0])
+        echo 'Skip test reports at this moment'
         stage 'Clean up'
         sh 'make clean'
         sh 'make logout'
